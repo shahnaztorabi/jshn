@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>جشن شکوفه‌ها 🌸</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tahoma', 'Vazirmatn', sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7, #c9d6ff, #e2e2e2);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    position: relative;
+    padding: clamp(10px, 2vh, 30px) clamp(8px, 2vw, 20px);
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  #shield {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: transparent;
+    cursor: default;
+  }
+
+  .petal {
+    position: fixed;
+    top: -50px;
+    font-size: 24px;
+    animation: fall linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 0.9; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0.2; }
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: clamp(18px, 4vw, 30px);
+    padding: clamp(18px, 4vh, 45px) clamp(14px, 4vw, 40px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    max-width: 750px;
+    width: 100%;
+    animation: fadeIn 1.5s ease;
+    margin-bottom: clamp(12px, 2vh, 25px);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== عنوان با انیمیشن بزرگ و کوچیک محسوس ===== */
+  .title {
+    font-size: clamp(1.4rem, 5vw, 2.8rem);
+    color: #c2185b;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+    animation: pulse 2.5s ease-in-out infinite;
+    transform-origin: center;
+    display: inline-block;
+  }
+
+  @keyframes pulse {
+    0%   { transform: scale(0.92); }
+    50%  { transform: scale(1.52); }
+    100% { transform: scale(0.92); }
+  }
+
+  .subtitle {
+    font-size: clamp(0.85rem, 2.5vw, 1.2rem);
+    color: #6a1b9a;
+    margin-bottom: clamp(12px, 2.5vh, 25px);
+  }
+
+  .party-message {
+    background: linear-gradient(145deg, #fff9c4, #ffe0f0);
+    border: 3px dashed #ec407a;
+    border-radius: clamp(15px, 3vw, 25px);
+    padding: clamp(12px, 2.5vh, 22px) clamp(10px, 3vw, 20px);
+    margin-bottom: clamp(15px, 3vh, 30px);
+    box-shadow: 0 10px 25px rgba(236, 64, 122, 0.2);
+    animation: wiggle 3s ease-in-out infinite;
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+  }
+
+  .party-message .big-line {
+    font-size: clamp(1rem, 3.2vw, 1.6rem);
+    font-weight: bold;
+    color: #d81b60;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .party-message .sub-line {
+    font-size: clamp(0.8rem, 2.3vw, 1.15rem);
+    color: #6a1b9a;
+    line-height: 1.8;
+    font-weight: bold;
+  }
+
+  .party-message .highlight {
+    color: #f57c00;
+    font-size: clamp(0.95rem, 2.8vw, 1.3rem);
+  }
+
+  .party-message .clock {
+    display: inline-block;
+    background: #ec407a;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: clamp(0.75rem, 2.2vw, 1.1rem);
+    margin: 4px 2px;
+    box-shadow: 0 4px 10px rgba(236, 64, 122, 0.4);
+  }
+
+  .party-message .calendar {
+    display: inline-block;
+    background: #8e24aa;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: clamp(0.75rem, 2.2vw, 1.1rem);
+    margin: 4px 2px;
+    box-shadow: 0 4px 10px rgba(142, 36, 170, 0.4);
+  }
+
+  /* ===== متن بالای شمارش معکوس ===== */
+  .countdown-title {
+    font-size: clamp(1rem, 3.2vw, 1.5rem);
+    font-weight: bold;
+    color: #c2185b;
+    margin-bottom: clamp(10px, 1.8vh, 18px);
+    text-shadow: 1px 1px 6px rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.3px;
+  }
+
+  /* ===== شمارش معکوس — همیشه در یک خط ===== */
+  .countdown {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: clamp(4px, 1.2vw, 15px);
+    margin-bottom: clamp(12px, 2vh, 25px);
+    direction: ltr;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .time-box {
+    background: linear-gradient(145deg, #ffffff, #ffe4ec);
+    border-radius: clamp(10px, 2.5vw, 20px);
+    padding: clamp(8px, 2vh, 18px) clamp(4px, 1.5vw, 15px);
+    flex: 1 1 0;
+    min-width: 0;
+    box-shadow: 0 8px 20px rgba(194, 24, 91, 0.2);
+    border: clamp(1.5px, 0.4vw, 2px) solid #f8bbd0;
+    transition: transform 0.3s ease;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .time-box:hover {
+    transform: translateY(-5px) scale(1.05);
+  }
+
+  .time-number {
+    font-size: clamp(1.3rem, 5.5vw, 3rem);
+    font-weight: bold;
+    color: #c2185b;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .time-label {
+    font-size: clamp(0.6rem, 2vw, 0.95rem);
+    color: #6a1b9a;
+    margin-top: clamp(3px, 0.8vh, 8px);
+    white-space: nowrap;
+  }
+
+  .message {
+    font-size: clamp(0.95rem, 3vw, 1.3rem);
+    color: #4a148c;
+    margin-top: clamp(10px, 1.5vh, 20px);
+    font-weight: bold;
+    min-height: 30px;
+  }
+
+  .flower-icon {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    display: block;
+    margin-bottom: 5px;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* ===== فوتر ===== */
+  .footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    font-size: clamp(0.85rem, 2.5vw, 1.2rem);
+    font-weight: bold;
+    color: #6a1b9a;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: clamp(8px, 1.5vh, 15px) clamp(15px, 4vw, 35px);
+    border-radius: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 25px rgba(194, 24, 91, 0.15);
+    letter-spacing: 0.5px;
+    max-width: 95vw;
+  }
+
+  .footer .emoji {
+    font-size: clamp(1rem, 2.8vw, 1.3rem);
+    margin: 0 5px;
+  }
+
+  /* ===== تنظیمات خاص برای صفحه‌های خیلی کوچک ===== */
+  @media (max-width: 400px) {
+    .time-box {
+      padding: 8px 3px;
+      border-radius: 10px;
+    }
+    .time-number {
+      font-size: clamp(1.1rem, 6vw, 1.6rem);
+    }
+    .time-label {
+      font-size: clamp(0.55rem, 2.5vw, 0.7rem);
+    }
+    .countdown {
+      gap: 4px;
+    }
+  }
+
+  /* ===== برای صفحه‌های کوتاه (لنداسکیپ موبایل) ===== */
+  @media (max-height: 550px) {
+    .party-message {
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+    .container {
+      padding: 15px 20px;
+    }
+    .flower-icon {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div id="shield"></div>
+
+  <div class="container">
+    <span class="flower-icon">🌸</span>
+    <h1 class="title">جشن شکوفه‌ها</h1>
+    <p class="subtitle">بهار علم و دانش مبارک 🌷</p>
+
+    <div class="party-message">
+      <div class="big-line">
+        🎈🌸 آخ‌جون! چه روز قشنگی در راهه! 🌸🎈
+      </div>
+      <div class="sub-line">
+        فقط یه کم دیگه مونده تا<br>
+        <span class="highlight">🎉 جشن شکوفه‌های کلاس اولی‌ها 🎉</span><br>
+        <span class="calendar">📅 ۳۰ شهریور ۱۴۰۵</span>
+        <span class="clock">⏰ ساعت ۸:۳۰ صبح</span><br>
+        <span style="color:#d81b60;">پس زود باش، آماده شو! قراره کلی بخندیم و شادی کنیم! 🥳</span>
+      </div>
+    </div>
+
+    <!-- ===== متن بالای شمارش معکوس ===== -->
+    <div class="countdown-title">
+      ⏳ زمان باقی مانده تا شروع جشن شکوفه‌ها ⏳
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div class="time-box">
+        <div class="time-number" id="days">--</div>
+        <div class="time-label">روز</div>
+      </div>
+      <div class="time-box">
+        <div class="time-number" id="hours">--</div>
+        <div class="time-label">ساعت</div>
+      </div>
+      <div class="time-box">
+        <div class="time-number" id="minutes">--</div>
+        <div class="time-label">دقیقه</div>
+      </div>
+      <div class="time-box">
+        <div class="time-number" id="seconds">--</div>
+        <div class="time-label">ثانیه</div>
+      </div>
+    </div>
+
+    <div class="message" id="message"></div>
+  </div>
+
+  <div class="footer">
+    <span class="emoji">🌸</span>
+    ترابی معاونت آموزشی مدرسه مرحوم کرمی
+    <span class="emoji">🌸</span>
+  </div>
+
+<script>
+  // ===== تنظیم تاریخ هدف =====
+  // ۳۰ شهریور ۱۴۰۵ ساعت ۸:۳۰ صبح به وقت ایران
+  const targetDate = new Date("2026-09-21T08:30:00+03:30").getTime();
+
+  // ===== گلبرگ‌ها =====
+  const petalEmojis = ['🌸', '🌺', '🌼', '🌸', '🌷', '🌸'];
+  for (let i = 0; i < 25; i++) {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+    petal.textContent = petalEmojis[Math.floor(Math.random() * petalEmojis.length)];
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.animationDuration = (Math.random() * 6 + 6) + 's';
+    petal.style.animationDelay = (Math.random() * 10) + 's';
+    petal.style.fontSize = (Math.random() * 20 + 15) + 'px';
+    document.body.appendChild(petal);
+  }
+
+  const daysEl = document.getElementById('days');
+  const hoursEl = document.getElementById('hours');
+  const minutesEl = document.getElementById('minutes');
+  const secondsEl = document.getElementById('seconds');
+  const messageEl = document.getElementById('message');
+
+  function pad(num) {
+    return num < 10 ? '0' + num : num;
+  }
+
+  // ==========================================
+  // 🛡️ محافظت‌های امنیتی
+  // ==========================================
+
+  document.addEventListener('contextmenu', e => { e.preventDefault(); return false; }, false);
+  document.addEventListener('dragstart', e => e.preventDefault());
+  document.addEventListener('selectstart', e => e.preventDefault());
+  document.addEventListener('copy', e => e.preventDefault());
+  document.addEventListener('cut', e => e.preventDefault());
+
+  function blockKeys(e) {
+    const k = e.keyCode || e.which;
+    const ctrl = e.ctrlKey || e.metaKey;
+    const shift = e.shiftKey;
+
+    if (k === 123) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (ctrl && shift && (k === 73 || k === 74 || k === 67)) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (ctrl && k === 85) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (ctrl && k === 83) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (ctrl && k === 80) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (ctrl && k === 65) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (ctrl && k === 67) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (ctrl && k === 88) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (ctrl && k === 86) { e.preventDefault(); e.stopPropagation(); return false; }
+    if (ctrl && (k === 71 || k === 70)) { e.preventDefault(); e.stopPropagation(); return false; }
+  }
+
+  document.addEventListener('keydown', blockKeys, true);
+  document.addEventListener('keyup',   blockKeys, true);
+  document.addEventListener('keypress',blockKeys, true);
+  window.addEventListener('keydown', blockKeys, true);
+  window.addEventListener('keyup',   blockKeys, true);
+
+  // ==========================================
+  // ⏰ زمان اینترنت (اولویت اول) + ساعت گوشی (پشتیبان)
+  // ==========================================
+
+  let timeOffset = 0;
+
+  async function syncTime() {
+    const apis = [
+      async () => {
+        const r = await fetch('https://worldtimeapi.org/api/timezone/Asia/Tehran');
+        const d = await r.json();
+        return new Date(d.datetime).getTime();
+      },
+      async () => {
+        const r = await fetch('https://timeapi.io/api/Time/current/zone?timeZone=Asia/Tehran');
+        const d = await r.json();
+        return new Date(d.dateTime).getTime();
+      }
+    ];
+
+    for (const api of apis) {
+      try {
+        const internetTime = await api();
+        timeOffset = internetTime - Date.now();
+        return;
+      } catch (e) { continue; }
+    }
+  }
+
+  function getCurrentTime() {
+    return Date.now() + timeOffset;
+  }
+
+  function updateCountdown() {
+    const now = getCurrentTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      document.getElementById('countdown').style.display = 'none';
+      document.querySelector('.countdown-title').style.display = 'none';
+      messageEl.innerHTML = '🎉🌸 جشن شکوفه‌ها آغاز شد! 🌸🎉<br>بهار دانش مبارک!';
+      messageEl.style.fontSize = '1.5rem';
+      messageEl.style.color = '#c2185b';
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    daysEl.textContent = days;
+    hoursEl.textContent = pad(hours);
+    minutesEl.textContent = pad(minutes);
+    secondsEl.textContent = pad(seconds);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  syncTime();
+  setInterval(syncTime, 60 * 60 * 1000);
+</script>
+
+</body>
+</html>
